@@ -1,0 +1,34 @@
+<!-- application.component.html -->
+<div class="container mt-5">
+    <p>{{applicantForm.value | json}}</p>
+    <form [formGroup]="applicantForm">
+  
+      <div class="mb-3">
+        <label for="firstName" class="form-label">First Name</label>
+        <input type="text" class="form-control" id="firstName" formControlName="firstName"
+        [ngClass]="{'is-invalid': applicantForm.get('firstName')?.touched && applicantForm.get('firstName')?.value==''  }">
+        <div class="invalid-feedback">Name is required</div>
+      </div>
+  
+      <div class="mb-3">
+        <label for="lastName" class="form-label">Last Name</label>
+        <input type="text" class="form-control" id="lastName" formControlName="lastName" 
+        [ngClass]="{'is-invalid': applicantForm.get('lastName')?.touched && applicantForm.get('lastName')?.value==''  }">
+        <div class="invalid-feedback">Lastname is required</div>
+
+      </div>
+  
+  
+      <div class="mb-3">
+        <label for="phoneNumber" class="form-label">Phone Number</label>
+        <input type="text" class="form-control" id="phoneNumber" formControlName="phoneNumber">
+      </div>
+  
+  
+      <button type="submit" class="btn btn-primary" (click)="addUser()">Submit</button>
+    </form>
+
+
+    <div *ngFor="for let person of people">{{person.firstName}}-{{person.lastName}}-{{person.phoneNumber}}</div>
+  </div>
+  
